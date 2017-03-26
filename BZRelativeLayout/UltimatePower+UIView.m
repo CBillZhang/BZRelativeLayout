@@ -192,64 +192,63 @@ static const NSString *RULEMARGIN = @"ruleMargin";
                 }];
             }
         }else{
-#warning TODO:Compatible with different resolutions
             for (NSDictionary *rule in rules) {
                 CGFloat ruleMargin = [rule[RULEMARGIN] floatValue];
                 RelativeRule relativeRule = [[rule objectForKey:RULE] integerValue];
                 switch (relativeRule) {
                     case RelativeRuleStartOf:
-                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzLeft-view.frame.size.width)*2+ruleMargin, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzLeft-view.frame.size.width)+ruleMargin, view.bzTop)];
                         break;
                     case RelativeRuleAboveOf:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, (((UIView*)rule[RULEVIEW]).bzTop-view.frame.size.height)*2+ruleMargin)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzTop-view.frame.size.height)+ruleMargin)];
                         break;
                     case RelativeRuleEndOf:
-                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzRight)*2+ruleMargin, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzRight)+ruleMargin, view.bzTop)];
                         break;
                     case RelativeRuleBelowOf:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, (((UIView*)rule[RULEVIEW]).bzBottom)*2+ruleMargin)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzBottom)+ruleMargin)];
                         break;
                     case RelativeRuleAlignStart:
-                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzLeft)*2+ruleMargin, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzLeft)+ruleMargin, view.bzTop)];
                         break;
                     case RelativeRuleAlignTop:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, (((UIView*)rule[RULEVIEW]).bzTop)*2+ruleMargin)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzTop)+ruleMargin)];
                         break;
                     case RelativeRuleAlignEnd:
-                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzRight-view.frame.size.width)*2+ruleMargin, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzRight-view.frame.size.width)+ruleMargin, view.bzTop)];
                         break;
                     case RelativeRuleAlignBottom:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, (((UIView*)rule[RULEVIEW]).bzBottom-view.frame.size.height)*2+ruleMargin)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzBottom-view.frame.size.height)+ruleMargin)];
                         break;
                     case RelativeRuleAlignParentStart:
-                        [view setBzOrigin:CGPointMake(ruleMargin, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake(ruleMargin, view.bzTop)];
                         break;
                     case RelativeRuleAlignParentTop:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, ruleMargin)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, ruleMargin)];
                         break;
                     case RelativeRuleAlignParentEnd:
-                        [view setBzOrigin:CGPointMake((view.superview.frame.size.width-view.frame.size.width)*2+ruleMargin, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake((view.superview.frame.size.width-view.frame.size.width)+ruleMargin, view.bzTop)];
                         break;
                     case RelativeRuleAlignParentBottom:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, (view.superview.frame.size.height-view.frame.size.height)*2+ruleMargin)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, (view.superview.frame.size.height-view.frame.size.height)+ruleMargin)];
                         break;
                     case RelativeRuleCenterHorizontalOf:
-                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).frame.size.width/2-view.frame.size.width/2)*2, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).frame.size.width/2-view.frame.size.width/2), view.bzTop)];
                         break;
                     case RelativeRuleCenterVerticalOf:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, (((UIView*)rule[RULEVIEW]).frame.size.height/2 - view.frame.size.height/2)*2)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).frame.size.height/2 - view.frame.size.height/2))];
                         break;
                     case RelativeRuleCenterOf:
-                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).frame.size.width/2-view.frame.size.width/2)*2, (((UIView*)rule[RULEVIEW]).frame.size.height/2 - view.frame.size.height/2)*2)];
+                        [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).frame.size.width/2-view.frame.size.width/2), (((UIView*)rule[RULEVIEW]).frame.size.height/2 - view.frame.size.height/2))];
                         break;
                     case RelativeRuleCenterHorizontalInParent:
-                        [view setBzOrigin:CGPointMake((view.superview.frame.size.width/2-view.frame.size.width/2)*2, view.bzTop*2)];
+                        [view setBzOrigin:CGPointMake((view.superview.frame.size.width/2-view.frame.size.width/2), view.bzTop)];
                         break;
                     case RelativeRuleCenterVerticalInParent:
-                        [view setBzOrigin:CGPointMake(view.bzLeft*2, (view.superview.frame.size.height/2 - view.frame.size.height/2)*2)];
+                        [view setBzOrigin:CGPointMake(view.bzLeft, (view.superview.frame.size.height/2 - view.frame.size.height/2))];
                         break;
                     case RelativeRuleCenterInParent:
-                        [view setBzOrigin:CGPointMake((view.superview.frame.size.width/2-view.frame.size.width/2)*2, (view.superview.frame.size.height/2 - view.frame.size.height/2)*2)];
+                        [view setBzOrigin:CGPointMake((view.superview.frame.size.width/2-view.frame.size.width/2), (view.superview.frame.size.height/2 - view.frame.size.height/2))];
                         break;
                 }
             }
