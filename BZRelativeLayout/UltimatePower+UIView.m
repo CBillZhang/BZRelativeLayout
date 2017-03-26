@@ -250,6 +250,7 @@ static const NSString *RULEMARGIN = @"ruleMargin";
                     case RelativeRuleCenterInParent:
                         [view setBzOrigin:CGPointMake((view.superview.frame.size.width/2-view.frame.size.width/2), (view.superview.frame.size.height/2 - view.frame.size.height/2))];
                         break;
+                    default:break;
                 }
             }
         }
