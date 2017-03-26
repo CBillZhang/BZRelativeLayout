@@ -18,7 +18,6 @@ Pod::Spec.new do |s|
   s.platform      = :ios, "8.0"
   s.source        = { :git => "https://github.com/CBillZhang/BZRelativeLayout.git", :tag => "v#{s.version}" }
   s.source_files  = "BZRelativeLayout", "BZRelativeLayout/*.{h,m}"
-  # s.exclude_files = "Classes/Exclude"
   s.framework     = "UIKit"
   s.dependency "Masonry"
 
