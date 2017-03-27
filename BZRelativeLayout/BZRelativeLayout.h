@@ -14,6 +14,7 @@ FOUNDATION_EXPORT double BZRelativeLayoutVersionNumber;
 //! Project version string for BZRelativeLayout.
 FOUNDATION_EXPORT const unsigned char BZRelativeLayoutVersionString[];
 
+#import "UltimatePower+UIView.h"
 // In this header, you should import all the public headers of your framework using statements like #import <BZRelativeLayout/PublicHeader.h>
 
 
