@@ -73,20 +73,20 @@ static const NSString *RULEMARGIN = @"ruleMargin";
     return objc_getAssociatedObject(self, _cmd);
 }
 
--(void)addRule:(RelativeRule)rule{
+-(void)addRule:(BZRelativeRule)rule{
     [self addRule:rule view:nil margin:0];
 }
 
--(void)addRule:(RelativeRule)rule view:(UIView *)view{
+-(void)addRule:(BZRelativeRule)rule view:(UIView *)view{
     [self addRule:rule view:view margin:0];
 }
 
--(void)addRule:(RelativeRule)rule margin:(CGFloat)margin{
+-(void)addRule:(BZRelativeRule)rule margin:(CGFloat)margin{
     [self addRule:rule view:nil margin:margin];
 }
 
--(void)addRule:(RelativeRule)rule view:(UIView *)view margin:(CGFloat)margin{
-    if (rule == RelativeRuleStartOf || rule == RelativeRuleAboveOf || rule == RelativeRuleEndOf || rule == RelativeRuleBelowOf || rule == RelativeRuleAlignStart || rule == RelativeRuleAlignTop || rule == RelativeRuleAlignEnd || rule == RelativeRuleAlignBottom || rule == RelativeRuleCenterHorizontalOf || rule == RelativeRuleCenterVerticalOf || rule == RelativeRuleCenterOf) {
+-(void)addRule:(BZRelativeRule)rule view:(UIView *)view margin:(CGFloat)margin{
+    if (rule == BZRelativeRuleStartOf || rule == BZRelativeRuleAboveOf || rule == BZRelativeRuleEndOf || rule == BZRelativeRuleBelowOf || rule == BZRelativeRuleAlignStart || rule == BZRelativeRuleAlignTop || rule == BZRelativeRuleAlignEnd || rule == BZRelativeRuleAlignBottom || rule == BZRelativeRuleCenterHorizontalOf || rule == BZRelativeRuleCenterVerticalOf || rule == BZRelativeRuleCenterOf) {
         if (!view) {
             NSLog(@"You may forget to set the view:%@",view);
             return;
@@ -114,13 +114,13 @@ static const NSString *RULEMARGIN = @"ruleMargin";
         if (self.enableAutoLayout) {
             for (NSDictionary *rule in rules) {
                 CGFloat ruleMargin = [rule[RULEMARGIN] floatValue];
-                RelativeRule relativeRule = [[rule objectForKey:RULE] integerValue];
+                BZRelativeRule relativeRule = [[rule objectForKey:RULE] integerValue];
                 [view mas_updateConstraints:^(MASConstraintMaker *make) {
                     switch (relativeRule) {
-                        case RelativeRuleStartOf:
+                        case BZRelativeRuleStartOf:
                             make.right.equalTo(((UIView*)rule[RULEVIEW]).mas_left).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAboveOf:
+                        case BZRelativeRuleAboveOf:
                         {
                             UIView *v = rule[RULEVIEW];
                             if ([v isKindOfClass:[UITabBar class]]) {
@@ -130,10 +130,10 @@ static const NSString *RULEMARGIN = @"ruleMargin";
                             }
                         }
                             break;
-                        case RelativeRuleEndOf:
+                        case BZRelativeRuleEndOf:
                             make.left.equalTo(((UIView*)rule[RULEVIEW]).mas_right).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleBelowOf:
+                        case BZRelativeRuleBelowOf:
                         {
                             UIView *v = rule[RULEVIEW];
                             if ([v isKindOfClass:[UINavigationBar class]]) {
@@ -143,49 +143,49 @@ static const NSString *RULEMARGIN = @"ruleMargin";
                             }
                         }
                             break;
-                        case RelativeRuleAlignStart:
+                        case BZRelativeRuleAlignStart:
                             make.left.equalTo(rule[RULEVIEW]).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAlignTop:
+                        case BZRelativeRuleAlignTop:
                             make.top.equalTo(rule[RULEVIEW]).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAlignEnd:
+                        case BZRelativeRuleAlignEnd:
                             make.right.equalTo(rule[RULEVIEW]).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAlignBottom:
+                        case BZRelativeRuleAlignBottom:
                             make.bottom.equalTo(rule[RULEVIEW]).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAlignParentStart:
+                        case BZRelativeRuleAlignParentStart:
                             make.left.equalTo(view.superview).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAlignParentTop:
+                        case BZRelativeRuleAlignParentTop:
                             make.top.equalTo(view.superview).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAlignParentEnd:
+                        case BZRelativeRuleAlignParentEnd:
                             make.right.equalTo(view.superview).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleAlignParentBottom:
+                        case BZRelativeRuleAlignParentBottom:
                             make.bottom.equalTo(view.superview).with.offset(ruleMargin);
                             break;
-                        case RelativeRuleCenterHorizontalOf:
+                        case BZRelativeRuleCenterHorizontalOf:
                             make.centerX.equalTo(rule[RULEVIEW]);
                             break;
-                        case RelativeRuleCenterVerticalOf:
+                        case BZRelativeRuleCenterVerticalOf:
                             make.centerY.equalTo(rule[RULEVIEW]);
                             break;
-                        case RelativeRuleCenterOf:
+                        case BZRelativeRuleCenterOf:
                             make.center.equalTo(rule[RULEVIEW]);
                             break;
-                        case RelativeRuleCenterHorizontalInParent:
+                        case BZRelativeRuleCenterHorizontalInParent:
                             make.centerX.equalTo(view.superview);
                             break;
-                        case RelativeRuleCenterVerticalInParent:
+                        case BZRelativeRuleCenterVerticalInParent:
                             make.centerY.equalTo(view.superview);
                             break;
-                        case RelativeRuleCenterInParent:
+                        case BZRelativeRuleCenterInParent:
                             make.center.equalTo(view.superview);
                             break;
-                        case RelativeRuleBaseline:
+                        case BZRelativeRuleBaseline:
                             make.baseline.equalTo(((UIView*)rule[RULEVIEW]));
                             break;
                     }
@@ -194,60 +194,60 @@ static const NSString *RULEMARGIN = @"ruleMargin";
         }else{
             for (NSDictionary *rule in rules) {
                 CGFloat ruleMargin = [rule[RULEMARGIN] floatValue];
-                RelativeRule relativeRule = [[rule objectForKey:RULE] integerValue];
+                BZRelativeRule relativeRule = [[rule objectForKey:RULE] integerValue];
                 switch (relativeRule) {
-                    case RelativeRuleStartOf:
+                    case BZRelativeRuleStartOf:
                         [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzLeft-view.frame.size.width)+ruleMargin, view.bzTop)];
                         break;
-                    case RelativeRuleAboveOf:
+                    case BZRelativeRuleAboveOf:
                         [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzTop-view.frame.size.height)+ruleMargin)];
                         break;
-                    case RelativeRuleEndOf:
+                    case BZRelativeRuleEndOf:
                         [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzRight)+ruleMargin, view.bzTop)];
                         break;
-                    case RelativeRuleBelowOf:
+                    case BZRelativeRuleBelowOf:
                         [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzBottom)+ruleMargin)];
                         break;
-                    case RelativeRuleAlignStart:
+                    case BZRelativeRuleAlignStart:
                         [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzLeft)+ruleMargin, view.bzTop)];
                         break;
-                    case RelativeRuleAlignTop:
+                    case BZRelativeRuleAlignTop:
                         [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzTop)+ruleMargin)];
                         break;
-                    case RelativeRuleAlignEnd:
+                    case BZRelativeRuleAlignEnd:
                         [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).bzRight-view.frame.size.width)+ruleMargin, view.bzTop)];
                         break;
-                    case RelativeRuleAlignBottom:
+                    case BZRelativeRuleAlignBottom:
                         [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).bzBottom-view.frame.size.height)+ruleMargin)];
                         break;
-                    case RelativeRuleAlignParentStart:
+                    case BZRelativeRuleAlignParentStart:
                         [view setBzOrigin:CGPointMake(ruleMargin, view.bzTop)];
                         break;
-                    case RelativeRuleAlignParentTop:
+                    case BZRelativeRuleAlignParentTop:
                         [view setBzOrigin:CGPointMake(view.bzLeft, ruleMargin)];
                         break;
-                    case RelativeRuleAlignParentEnd:
+                    case BZRelativeRuleAlignParentEnd:
                         [view setBzOrigin:CGPointMake((view.superview.frame.size.width-view.frame.size.width)+ruleMargin, view.bzTop)];
                         break;
-                    case RelativeRuleAlignParentBottom:
+                    case BZRelativeRuleAlignParentBottom:
                         [view setBzOrigin:CGPointMake(view.bzLeft, (view.superview.frame.size.height-view.frame.size.height)+ruleMargin)];
                         break;
-                    case RelativeRuleCenterHorizontalOf:
+                    case BZRelativeRuleCenterHorizontalOf:
                         [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).frame.size.width/2-view.frame.size.width/2), view.bzTop)];
                         break;
-                    case RelativeRuleCenterVerticalOf:
+                    case BZRelativeRuleCenterVerticalOf:
                         [view setBzOrigin:CGPointMake(view.bzLeft, (((UIView*)rule[RULEVIEW]).frame.size.height/2 - view.frame.size.height/2))];
                         break;
-                    case RelativeRuleCenterOf:
+                    case BZRelativeRuleCenterOf:
                         [view setBzOrigin:CGPointMake((((UIView*)rule[RULEVIEW]).frame.size.width/2-view.frame.size.width/2), (((UIView*)rule[RULEVIEW]).frame.size.height/2 - view.frame.size.height/2))];
                         break;
-                    case RelativeRuleCenterHorizontalInParent:
+                    case BZRelativeRuleCenterHorizontalInParent:
                         [view setBzOrigin:CGPointMake((view.superview.frame.size.width/2-view.frame.size.width/2), view.bzTop)];
                         break;
-                    case RelativeRuleCenterVerticalInParent:
+                    case BZRelativeRuleCenterVerticalInParent:
                         [view setBzOrigin:CGPointMake(view.bzLeft, (view.superview.frame.size.height/2 - view.frame.size.height/2))];
                         break;
-                    case RelativeRuleCenterInParent:
+                    case BZRelativeRuleCenterInParent:
                         [view setBzOrigin:CGPointMake((view.superview.frame.size.width/2-view.frame.size.width/2), (view.superview.frame.size.height/2 - view.frame.size.height/2))];
                         break;
                     default:break;

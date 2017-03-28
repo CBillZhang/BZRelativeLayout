@@ -22,46 +22,46 @@
 
 @interface UIView (BZRelativeLayout)
 
-typedef NS_ENUM(NSInteger, RelativeRule){
+typedef NS_ENUM(NSInteger, BZRelativeRule){
     //Must set a view
-    RelativeRuleStartOf,
-    RelativeRuleAboveOf,
-    RelativeRuleEndOf,
-    RelativeRuleBelowOf,
+    BZRelativeRuleStartOf,
+    BZRelativeRuleAboveOf,
+    BZRelativeRuleEndOf,
+    BZRelativeRuleBelowOf,
     
-    RelativeRuleAlignStart,
-    RelativeRuleAlignTop,
-    RelativeRuleAlignEnd,
-    RelativeRuleAlignBottom,
+    BZRelativeRuleAlignStart,
+    BZRelativeRuleAlignTop,
+    BZRelativeRuleAlignEnd,
+    BZRelativeRuleAlignBottom,
     
     //Ignore view
-    RelativeRuleAlignParentStart,
-    RelativeRuleAlignParentTop,
-    RelativeRuleAlignParentEnd,
-    RelativeRuleAlignParentBottom,
+    BZRelativeRuleAlignParentStart,
+    BZRelativeRuleAlignParentTop,
+    BZRelativeRuleAlignParentEnd,
+    BZRelativeRuleAlignParentBottom,
     
     //Ignore view,margin
-    RelativeRuleCenterHorizontalOf,
-    RelativeRuleCenterVerticalOf,
-    RelativeRuleCenterOf,
+    BZRelativeRuleCenterHorizontalOf,
+    BZRelativeRuleCenterVerticalOf,
+    BZRelativeRuleCenterOf,
     
-    RelativeRuleCenterHorizontalInParent,
-    RelativeRuleCenterVerticalInParent,
-    RelativeRuleCenterInParent,
+    BZRelativeRuleCenterHorizontalInParent,
+    BZRelativeRuleCenterVerticalInParent,
+    BZRelativeRuleCenterInParent,
     
-    RelativeRuleBaseline//Only works on AutoLayout
+    BZRelativeRuleBaseline//Only works on AutoLayout
 };
 
 @property(nonatomic,getter = isEnableAutoLayout) BOOL enableAutoLayout;//Default is YES
 
 @property (nonatomic,nullable) NSArray<NSDictionary*> *rules;
 
--(void) addRule:(RelativeRule)rule;
+-(void) addRule:(BZRelativeRule)rule;
 
--(void) addRule:(RelativeRule)rule view:(nullable UIView*) view;
+-(void) addRule:(BZRelativeRule)rule view:(nullable UIView*) view;
 
--(void) addRule:(RelativeRule)rule margin:(CGFloat) margin;
+-(void) addRule:(BZRelativeRule)rule margin:(CGFloat) margin;
 
--(void) addRule:(RelativeRule)rule view:(nullable UIView*) view margin:(CGFloat) margin;
+-(void) addRule:(BZRelativeRule)rule view:(nullable UIView*) view margin:(CGFloat) margin;
 
 @end
