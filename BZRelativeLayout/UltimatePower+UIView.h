@@ -2,8 +2,8 @@
 //  UltimatePower.h
 //  BZFramework
 //
-//  Created by Bill on 16/4/23.
-//  Copyright © 2016年 Bill. All rights reserved.
+//  Created by Bill.Zhang on 2017/3/25.
+//  Copyright © 2017年 Bill.Zhang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
