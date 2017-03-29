@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "BZRelativeLayout"
-  s.version       = "1.0"
+  s.version       = "0.0.5"
   s.summary       = "RelativeLayout for ios."
   s.description   = "No longer use coordinates,BZRelativeLayout to help you build the IOS interface layout."
   s.homepage      = "https://github.com/CBillZhang/BZRelativeLayout"
@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/CBillZhang/BZRelativeLayout.git", :tag => "v#{s.version}" }
   s.source_files  = "BZRelativeLayout", "BZRelativeLayout/*.{h,m}"
   s.framework     = "UIKit"
-  s.dependency "Masonry"
+  s.dependency      "Masonry"
 
 end
