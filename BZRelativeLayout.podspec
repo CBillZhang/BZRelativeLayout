@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "BZRelativeLayout"
-  s.version       = "0.0.5"
+  s.version       = "0.0.6"
   s.summary       = "RelativeLayout for ios."
   s.description   = "No longer use coordinates,BZRelativeLayout to help you build the IOS interface layout."
   s.homepage      = "https://github.com/CBillZhang/BZRelativeLayout"
